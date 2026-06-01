@@ -39,3 +39,11 @@
 - Verification: Full quiz simulation in test client passed.
 - One thing I learned: Claude caught a bug I didn't think of — clearing session in /results prevents an IndexError on restart.
 
+
+## Task 6 — CSS styling
+- Brief: Add styling to question.html and results.html — centered layout, proper buttons, progress bar.
+- What Claude proposed: Inline style blocks in each template, shared design tokens, CSS progress bar via Jinja.
+- What I changed before approving: Nothing — plan was clean.
+- Verification: Opened in browser and checked layout looked clean.
+- One thing I learned: Claude folded the missing results.html into this task since it was never actually created.
+
