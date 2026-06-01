@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feedback</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f4f6fb;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #1a1a2e;
+      padding: 1.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      padding: 2.5rem 2.5rem 2rem;
+      width: 100%;
+      max-width: 620px;
+      text-align: center;
+    }
+
+    .feedback-icon {
+      font-size: 2.5rem;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .feedback-heading {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .feedback-heading.correct { color: #16a34a; }
+    .feedback-heading.wrong   { color: #dc2626; }
+
+    .correct-answer {
+      font-size: 0.97rem;
+      color: #6b7280;
+      margin-bottom: 2rem;
+    }
+
+    .correct-answer strong {
+      color: #374151;
+    }
+
+    /* spacer when correct (no answer line shown) */
+    .spacer { margin-bottom: 2rem; }
+
+    .next-btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      color: #ffffff;
+      font-size: 0.97rem;
+      font-weight: 600;
+      font-family: inherit;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+
+    .next-btn:hover  { opacity: 0.9; transform: translateY(-1px); }
+    .next-btn:active { transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    {% if correct %}
+      <div class="feedback-icon">&#9989;</div>
+      <p class="feedback-heading correct">Correct!</p>
+      <div class="spacer"></div>
+    {% else %}
+      <div class="feedback-icon">&#10060;</div>
+      <p class="feedback-heading wrong">Wrong</p>
+      <p class="correct-answer">The correct answer was <strong>{{ correct_answer }}</strong></p>
+    {% endif %}
+
+    {% if done %}
+      <a class="next-btn" href="/results">See results</a>
+    {% else %}
+      <a class="next-btn" href="/">Next question</a>
+    {% endif %}
+  </div>
+</body>
+</html>

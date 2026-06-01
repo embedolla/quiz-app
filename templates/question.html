@@ -2,15 +2,134 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Question {{ index + 1 }} of {{ total }}</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f4f6fb;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #1a1a2e;
+      padding: 1.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      padding: 2.5rem 2.5rem 2rem;
+      width: 100%;
+      max-width: 620px;
+    }
+
+    /* ── Header row ── */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .question-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b7280;
+    }
+
+    .score-badge {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #4f46e5;
+      background: #eef2ff;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+    }
+
+    /* ── Progress bar ── */
+    .progress-track {
+      height: 6px;
+      background: #e5e7eb;
+      border-radius: 999px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #6366f1, #4f46e5);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    /* ── Question text ── */
+    .question-text {
+      font-size: 1.2rem;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 1.75rem;
+      color: #111827;
+    }
+
+    /* ── Option cards ── */
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .option-btn {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      background: #f9fafb;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      font-size: 0.97rem;
+      font-family: inherit;
+      color: #374151;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, color 0.15s, transform 0.1s;
+    }
+
+    .option-btn:hover {
+      border-color: #6366f1;
+      background: #eef2ff;
+      color: #4338ca;
+      transform: translateY(-1px);
+    }
+
+    .option-btn:active {
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
-  <p>Question {{ index + 1 }} of {{ total }}</p>
-  <h2>{{ question.question }}</h2>
-  <form method="POST" action="/answer">
-    {% for choice in question.choices %}
-      <button type="submit" name="choice" value="{{ loop.index0 }}">{{ choice }}</button>
-    {% endfor %}
-  </form>
+  <div class="card">
+    <div class="header">
+      <span class="question-label">Question {{ index + 1 }} / {{ total }}</span>
+      <span class="score-badge">Score: {{ score }} / {{ index }}</span>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: {{ ((index + 1) * 100 // total) }}%"></div>
+    </div>
+
+    <p class="question-text">{{ question.question }}</p>
+
+    <form method="POST" action="/answer">
+      <div class="options">
+        {% for choice in question.choices %}
+          <button class="option-btn" type="submit" name="choice" value="{{ loop.index0 }}">{{ choice }}</button>
+        {% endfor %}
+      </div>
+    </form>
+  </div>
 </body>
 </html>
