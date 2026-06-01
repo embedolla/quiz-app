@@ -55,3 +55,14 @@
 - Verification: pytest tests/test_quiz.py -v
 - One thing I learned: Claude created conftest.py at project root to add app to sys.path — hadn't thought of that.
 
+
+## AI Workflow
+
+Planning: Claude.ai chat designed the app before any code was written — routes, data model, edge cases.
+Executing: Claude Code with plan-mode briefs for each task.
+Polishing: Copilot inline in VS Code for small CSS and naming tweaks.
+Reviewing: Claude.ai chat to catch bugs the implementing agent missed.
+
+Chat outperformed Claude Code for planning — Claude Code would have started writing files immediately, chat let me think first.
+
+I switched from Claude Code to Copilot mid-task when the feedback page styling looked off — faster to tweak CSS inline than write a full brief.
