@@ -33,7 +33,9 @@ def create_app() -> Flask:
 
     @app.route("/results")
     def results() -> str:
-        return "Results coming soon"
+        score = session.get("score", 0)
+        session.clear()
+        return render_template("results.html", score=score, total=len(QUESTIONS))
 
     return app
 
