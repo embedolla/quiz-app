@@ -31,3 +31,11 @@
 - Verification: Test client checks passed.
 - One thing I learned: GET / was resetting the session every visit — Claude caught that and fixed it.
 
+
+## Task 5 — Results page
+- Brief: Add results.html showing final score and a Try Again button. Fix IndexError bug.
+- What Claude proposed: results route clears session before rendering, results.html shows score/total.
+- What I changed before approving: Nothing — Claude caught the IndexError bug unprompted.
+- Verification: Full quiz simulation in test client passed.
+- One thing I learned: Claude caught a bug I didn't think of — clearing session in /results prevents an IndexError on restart.
+
