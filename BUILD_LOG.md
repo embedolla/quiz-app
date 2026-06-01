@@ -15,3 +15,11 @@
 - Verification: python -c "from questions import QUESTIONS; assert len(QUESTIONS) == 10"
 - One thing I learned: TypedDict makes the data shape explicit without adding dependencies.
 
+
+## Task 3 — Flask app skeleton
+- Brief: Build create_app() with a home route that starts the quiz and renders question.html.
+- What Claude proposed: app.py with session-based index/score tracking, question.html with 4 answer buttons.
+- What I changed before approving: Nothing — plan was clean.
+- Verification: curl check passed, template renders first question.
+- One thing I learned: Claude exited plan mode on its own and just implemented — watch for that.
+

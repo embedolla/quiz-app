@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question {{ index + 1 }} of {{ total }}</title>
+</head>
+<body>
+  <p>Question {{ index + 1 }} of {{ total }}</p>
+  <h2>{{ question.question }}</h2>
+  <form method="POST" action="/answer">
+    {% for choice in question.choices %}
+      <button type="submit" name="choice" value="{{ loop.index0 }}">{{ choice }}</button>
+    {% endfor %}
+  </form>
+</body>
+</html>
