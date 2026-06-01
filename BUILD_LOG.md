@@ -47,3 +47,11 @@
 - Verification: Opened in browser and checked layout looked clean.
 - One thing I learned: Claude folded the missing results.html into this task since it was never actually created.
 
+
+## Task 7 — Tests
+- Brief: Write two pytest tests — correct answer increments score, finishing redirects to /results.
+- What Claude proposed: conftest.py at project root, two tests using Flask test client.
+- What I changed before approving: Nothing — plan was clean.
+- Verification: pytest tests/test_quiz.py -v
+- One thing I learned: Claude created conftest.py at project root to add app to sys.path — hadn't thought of that.
+
