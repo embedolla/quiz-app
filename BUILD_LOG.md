@@ -66,3 +66,13 @@ Reviewing: Claude.ai chat to catch bugs the implementing agent missed.
 Chat outperformed Claude Code for planning — Claude Code would have started writing files immediately, chat let me think first.
 
 I switched from Claude Code to Copilot mid-task when the feedback page styling looked off — faster to tweak CSS inline than write a full brief.
+
+## Reflection
+
+The agentic workflow let me ship a working Flask quiz app with session tracking, answer feedback, shuffled questions, and passing tests in a few hours. I couldn't have done that alone that fast. Claude handled the Flask patterns, session logic, and CSS while I focused on deciding what to build and whether the output was right.
+
+I had to step in twice. The results page said "Results coming soon" even after Claude said it was done — I caught it by testing in the browser, not by trusting Claude's output. I also had to fix a KeyError from the shuffle feature not initializing the session correctly. Both were caught by actually running the app.
+
+What this revealed is that I approve plans too quickly. The times things broke were when I said yes without fully reading the diff. I also realized I know less about Flask sessions than I thought — when things crashed I didn't always know why. The habit I need is slower plan review, not faster approval.
+
+For my internship, the first thing I'll do on day one is read the codebase and write a CLAUDE.md before touching anything. Documenting what the project is, what patterns it uses, and what Claude should never do is what makes the difference between a useful AI-assisted contributor and one who ships bugs.
