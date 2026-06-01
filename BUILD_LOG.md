@@ -23,3 +23,11 @@
 - Verification: curl check passed, template renders first question.
 - One thing I learned: Claude exited plan mode on its own and just implemented — watch for that.
 
+
+## Task 4 — Answer route
+- Brief: Add POST /answer to check answer, update score, advance question, redirect to results when done.
+- What Claude proposed: Session-aware GET /, POST /answer with score tracking, stub /results route.
+- What I changed before approving: Nothing — plan was clean.
+- Verification: Test client checks passed.
+- One thing I learned: GET / was resetting the session every visit — Claude caught that and fixed it.
+
